@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noti/bloc/login_bloc/login_bloc.dart';
-import 'package:noti/notification/notification.dart';
 import 'package:noti/view/home_view/home_view.dart';
 import 'package:noti/view/login_view/widgets/clock_widget.dart';
 import 'package:noti/view/login_view/widgets/auth_time_form_picker.dart';

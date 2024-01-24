@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noti/view/add_recurring_noti_view/add_recurring_noti_view.dart';
 import 'package:noti/view/requrring_noti_list_view/recurring_noti_list_view_widget.dart';
 
 class RecurringNotiGroupListWidget extends StatelessWidget {
@@ -32,7 +31,7 @@ class RecurringNotiGroupListWidget extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
             title: Text(
               text,
               style: Theme.of(context).textTheme.titleSmall,
@@ -45,7 +44,7 @@ class RecurringNotiGroupListWidget extends StatelessWidget {
           Container(
             height: 1,
             width: double.infinity,
-            color: Color(0xffE6E6E6),
+            color: const Color(0xffE6E6E6),
           )
         ],
       ),

@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
             child: PageView(
               controller: _myPage,
               physics: const NeverScrollableScrollPhysics(),
-              children: [
+              children: const [
                 OneTimeNotiListViewWidget(),
                 RecurringNotiGroupListWidget(),
               ], // Comment this if you need to use Swipe.

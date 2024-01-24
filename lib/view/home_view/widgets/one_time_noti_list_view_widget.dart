@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/domain/boxes.dart';
 import 'package:noti/domain/entity/one_time_noti.dart';
 import 'package:noti/view/add_one_time_noti_view/add_one_time_noti_view.dart';
-import 'package:noti/view/home_view/widgets/one_time_noti_container_widget.dart';
+import 'package:noti/view/home_view/widgets/noti_container_widget.dart';
 
 class OneTimeNotiListViewWidget extends StatefulWidget {
   const OneTimeNotiListViewWidget({super.key});
@@ -51,39 +49,42 @@ class _OneTimeNotiListViewWidgetState extends State<OneTimeNotiListViewWidget> {
               height: 24,
             ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AddOneTimeNotiView(),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddOneTimeNotiView(),
+                  ),
+                );
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 48,
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/icons/add_circle.png',
+                      height: 20,
+                      width: 20,
+                      color: Colors.white,
                     ),
-                  );
-                },
-                child: Container(
-                    alignment: Alignment.center,
-                    height: 48,
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/icons/add_circle.png',
-                          height: 20,
-                          width: 20,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(
-                          width: 8.0,
-                        ),
-                        Text(
-                          'Add new notification',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(color: Colors.white),
-                        ),
-                      ],
-                    ))),
+                    const SizedBox(
+                      width: 8.0,
+                    ),
+                    Text(
+                      'Add new notification',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            
             const SizedBox(
               height: 16.0,
             ),

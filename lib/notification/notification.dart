@@ -166,7 +166,6 @@
 // }
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:noti/notification/notification_controller.dart';
 // ignore: unused_import, depend_on_referenced_packages
 import 'package:timezone/timezone.dart' as tz;
@@ -195,6 +194,7 @@ class NotificationService {
             body: title,
           ));
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
   }
@@ -229,6 +229,7 @@ class NotificationService {
             .onNotificationDisplayedMethod,
       );
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
   }

@@ -3,6 +3,7 @@ import 'package:noti/const/colors.dart';
 
 ThemeData lightTheme() {
   return ThemeData(
+      // ignore: deprecated_member_use
       errorColor: kErrorColor,
       // floatingActionButtonTheme: const FloatingActionButtonThemeData(
       //     backgroundColor: Color.fromARGB(255, 240, 240, 240),

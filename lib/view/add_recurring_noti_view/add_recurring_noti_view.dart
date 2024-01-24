@@ -1,15 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noti/bloc/recurring_noti_bloc/recurring_noti_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/const/select_icon_and_color_lists.dart';
 import 'package:noti/notification/notification.dart';
-import 'package:noti/view/add_one_time_noti_view/widgets/time_form_picker.dart';
 import 'package:noti/view/home_view/home_view.dart';
 
 class AddRecurringNotiView extends StatefulWidget {
@@ -47,7 +43,7 @@ class _AddRecurringNotiViewState extends State<AddRecurringNotiView> {
             color: Colors.white,
           ),
         ),
-        title: Text('Add new notificaiton'),
+        title: const Text('Add new notificaiton'),
       ),
       body: Stack(
         children: [

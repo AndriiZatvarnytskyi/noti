@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:noti/view/home_view/widgets/app_bar_button.dart';
 
 class CustomAppBarWidget extends StatefulWidget {
-  const CustomAppBarWidget({super.key, required this.pageController, required this.initPage});
+  const CustomAppBarWidget(
+      {super.key, required this.pageController, required this.initPage});
   final PageController pageController;
   final int initPage;
 

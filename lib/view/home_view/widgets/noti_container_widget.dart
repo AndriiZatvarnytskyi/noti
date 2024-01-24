@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/bloc/recurring_noti_bloc/recurring_noti_bloc.dart';
-import 'package:noti/domain/entity/recurring_noti.dart';
+import 'package:noti/view/select_triger_view/select_triger_view.dart';
 
 class NotiContainerWidget extends StatelessWidget {
   final String message;
@@ -84,7 +84,7 @@ class NotiContainerWidget extends StatelessWidget {
                           ),
                         ],
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
                 const SizedBox(
                   height: 8,
                 ),
@@ -124,6 +124,7 @@ class NotiContainerWidget extends StatelessWidget {
               },
               child: Image.asset(
                 'assets/icons/delete_forever_icon.png',
+                // ignore: deprecated_member_use
                 color: Theme.of(context).errorColor,
               ),
             ),
@@ -135,18 +136,27 @@ class NotiContainerWidget extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: Container(
-                alignment: Alignment.center,
-                height: 40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 1, color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  "Select triger 1",
-                  style: Theme.of(context).textTheme.bodyLarge,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const SelectTrigerView(
+                      title: 'Select triger 1',
+                    );
+                  }));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 1, color: Theme.of(context).primaryColor),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    "Select triger 1",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
                 ),
               ),
             ),
@@ -154,17 +164,26 @@ class NotiContainerWidget extends StatelessWidget {
               width: 13,
             ),
             Expanded(
-              child: Container(
-                alignment: Alignment.center,
-                height: 40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      width: 1, color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const SelectTrigerView(
+                      title: 'Select triger 2',
+                    );
+                  }));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        width: 1, color: Theme.of(context).primaryColor),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text("Select triger 2",
+                      style: Theme.of(context).textTheme.bodyLarge),
                 ),
-                child: Text("Select triger 2",
-                    style: Theme.of(context).textTheme.bodyLarge),
               ),
             ),
           ],

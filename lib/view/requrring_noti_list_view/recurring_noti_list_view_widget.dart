@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/domain/boxes.dart';
-import 'package:noti/domain/entity/one_time_noti.dart';
-import 'package:noti/domain/entity/recurring_noti.dart';
-import 'package:noti/view/add_one_time_noti_view/add_one_time_noti_view.dart';
 import 'package:noti/view/add_recurring_noti_view/add_recurring_noti_view.dart';
-import 'package:noti/view/home_view/widgets/one_time_noti_container_widget.dart';
+import 'package:noti/view/home_view/widgets/noti_container_widget.dart';
 
 class RecurringNotiListView extends StatefulWidget {
   final String title;

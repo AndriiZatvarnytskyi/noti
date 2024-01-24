@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/domain/boxes.dart';
-import 'package:noti/domain/entity/one_time_noti.dart';
 
 class NotificationController {
   final BuildContext context;
@@ -13,14 +12,16 @@ class NotificationController {
   @pragma("vm:entry-point")
   Future<void> onNotificationDisplayedMethod(
       ReceivedNotification receivedNotification) async {
-    receivedNotification.title;
+   if(receivedNotification.channelKey == 'onetime_noti_channel') {
     List notiList = oneTimeNotiBox.values.toList();
-    int notiIndex = notiList
-        .indexWhere((element) => element.message == receivedNotification.body);
+      int notiIndex = notiList.indexWhere(
+          (element) => element.message == receivedNotification.body);
 
-    context
-        .read<OneTimeNotiBloc>()
-        .add(DeleteOneTimeNotiEvent(index: notiIndex));
+      context
+          .read<OneTimeNotiBloc>()
+          .add(DeleteOneTimeNotiEvent(index: notiIndex));
+   }
+    
   }
 
   @pragma("vm:entry-point")

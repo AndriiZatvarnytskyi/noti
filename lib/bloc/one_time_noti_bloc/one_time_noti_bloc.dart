@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:noti/domain/boxes.dart';
 import 'package:noti/domain/entity/one_time_noti.dart';
 
@@ -9,9 +8,6 @@ part 'one_time_noti_state.dart';
 
 class OneTimeNotiBloc extends Bloc<OneTimeNotiEvent, OneTimeNotiState> {
   OneTimeNotiBloc() : super(OneTimeNotiInitial()) {
-    on<OneTimeNotiEvent>((event, emit) {
-      // TODO: implement event handler
-    });
     on<SaveOneTimeNotiEvent>((event, emit) {
       if (int.parse(event.hour) > 23 || int.parse(event.minute) > 59) {
         return;
