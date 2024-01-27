@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:noti/bloc/one_time_noti_bloc/one_time_noti_bloc.dart';
 import 'package:noti/const/select_icon_and_color_lists.dart';
-import 'package:noti/notification/notification.dart';
+import 'package:noti/domain/notification/notification.dart';
 import 'package:noti/view/add_one_time_noti_view/widgets/time_form_picker.dart';
 import 'package:noti/view/home_view/home_view.dart';
 import 'package:noti/view/widgets/custom_app_bar.dart';

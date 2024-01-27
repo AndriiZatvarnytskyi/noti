@@ -62,23 +62,7 @@ class _LoginViewState extends State<LoginView> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        // appBar: AppBar(
-        //   title: const Text(
-        //     'Log In',
-        //   ),
-        //   flexibleSpace: Container(
-        //     decoration: BoxDecoration(
-        //       boxShadow: [
-        //         BoxShadow(
-        //           color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
-        //           spreadRadius: 0.5,
-        //           blurRadius: 4,
-        //           offset: Offset(0, 0.5), // changes position of shadow
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
+       
         body: Center(
           child: Column(
             children: [

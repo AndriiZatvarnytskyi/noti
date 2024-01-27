@@ -1,6 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:noti/notification/notification_controller.dart';
+import 'package:noti/domain/notification/notification_controller.dart';
 // ignore: unused_import, depend_on_referenced_packages
 import 'package:timezone/timezone.dart' as tz;
 // ignore: unused_import, depend_on_referenced_packages

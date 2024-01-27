@@ -7,7 +7,7 @@ import 'package:noti/bloc/recurring_noti_bloc/recurring_noti_bloc.dart';
 import 'package:noti/view/widgets/custom_app_bar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:noti/const/select_icon_and_color_lists.dart';
-import 'package:noti/notification/notification.dart';
+import 'package:noti/domain/notification/notification.dart';
 
 class AddRecurringNotiView extends StatefulWidget {
   final int minute;

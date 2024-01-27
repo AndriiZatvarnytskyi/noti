@@ -41,7 +41,7 @@ class CustomAppBarWidget extends StatelessWidget {
                         'assets/svg/arrow_back_ios_icon.svg',
                         // ignore: deprecated_member_use
                         color: Colors.white,
-                      )))
+                      ),),)
               : const SizedBox()
         ],
       ),

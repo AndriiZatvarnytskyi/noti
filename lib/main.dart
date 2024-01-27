@@ -1,4 +1,3 @@
-//import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +10,7 @@ import 'package:noti/const/theme_data.dart';
 import 'package:noti/domain/boxes.dart';
 import 'package:noti/domain/entity/one_time_noti.dart';
 import 'package:noti/domain/entity/recurring_noti.dart';
-import 'package:noti/notification/notification.dart';
+import 'package:noti/domain/notification/notification.dart';
 import 'package:noti/view/login_view/login_view.dart';
 
 // ignore: unused_import, depend_on_referenced_packages
@@ -63,9 +62,10 @@ class MainApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme(),
-          home: const LoginView()),
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme(),
+        home: const LoginView(),
+      ),
     );
   }
 }

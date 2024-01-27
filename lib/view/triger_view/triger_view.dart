@@ -198,8 +198,7 @@ class _TrigerViewState extends State<TrigerView> {
                                                 ),
                                               ],
                                             ),
-                                            //const Expanded(child: SizedBox()),
-                                            // const CheckBoxWidget(),
+                                           
                                           ],
                                         ),
                                       ),
