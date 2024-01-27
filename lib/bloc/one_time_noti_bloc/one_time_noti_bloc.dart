@@ -21,8 +21,11 @@ class OneTimeNotiBloc extends Bloc<OneTimeNotiEvent, OneTimeNotiState> {
         ));
       }
     });
+
     on<DeleteOneTimeNotiEvent>((event, emit) {
       oneTimeNotiBox.deleteAt(event.index);
+      emit(OneTimeNotiDelete());
+      emit(OneTimeNotiInitial());
     });
   }
 }

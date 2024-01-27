@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:noti/view/requrring_noti_list_view/recurring_noti_list_view_widget.dart';
 
 class RecurringNotiGroupListWidget extends StatelessWidget {
@@ -23,23 +26,25 @@ class RecurringNotiGroupListWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => RecurringNotiListView(
-                minute:minute,
+                    minute: minute,
                     title: text,
                   )),
         );
       },
       child: Column(
         children: [
-          ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-            title: Text(
-              text,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            trailing: Icon(
-              Icons.arrow_forward_ios_outlined,
-              color: Theme.of(context).primaryColor,
-            ),
+          Container(
+            color: const Color(0xfff8fafb),
+            child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                title: Text(
+                  text,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                trailing: SvgPicture.asset(
+                  'assets/svg/arrow_forward_ios.svg',
+                  color: Theme.of(context).primaryColor,
+                )),
           ),
           Container(
             height: 1,

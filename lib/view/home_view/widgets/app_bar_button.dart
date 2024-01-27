@@ -1,4 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppBarButtonWidget extends StatelessWidget {
   const AppBarButtonWidget({
@@ -32,13 +35,15 @@ class AppBarButtonWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                icon,
-                height: 24,
-                width: 24,
-                color: isActive
-                    ? Colors.white
-                    : Theme.of(context).appBarTheme.backgroundColor,
+              SizedBox(
+                child: SvgPicture.asset(
+                  icon,
+                  height: 21,
+                  width: 18,
+                  color: isActive
+                      ? Colors.white
+                      : Theme.of(context).appBarTheme.backgroundColor,
+                ),
               ),
               const SizedBox(
                 width: 8,
@@ -46,6 +51,7 @@ class AppBarButtonWidget extends StatelessWidget {
               Text(
                 text,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
                     color: isActive
                         ? Colors.white
                         : Theme.of(context).appBarTheme.backgroundColor),

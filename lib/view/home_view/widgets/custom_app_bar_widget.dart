@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:noti/view/home_view/widgets/app_bar_button.dart';
 
-class CustomAppBarWidget extends StatefulWidget {
-  const CustomAppBarWidget(
+class CustomPageControllerWidget extends StatefulWidget {
+  const CustomPageControllerWidget(
       {super.key, required this.pageController, required this.initPage});
   final PageController pageController;
   final int initPage;
 
   @override
-  State<CustomAppBarWidget> createState() => _CustomAppBarWidgetState();
+  State<CustomPageControllerWidget> createState() =>
+      _CustomPageControllerWidgetState();
 }
 
-class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
+class _CustomPageControllerWidgetState
+    extends State<CustomPageControllerWidget> {
   late int _currentPage;
 
   @override
@@ -61,13 +63,13 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
               width: double.infinity,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: const Color(0xFFF3F3F4),
+                  color: const Color(0xffF3F3F4),
                   border:
-                      Border.all(color: const Color(0xFFE6E6E6), width: 1.0)),
+                      Border.all(color: const Color(0xffE6E6E6), width: 1.0)),
               child: Row(children: [
                 AppBarButtonWidget(
                   text: 'One-time',
-                  icon: 'assets/icons/clock.png',
+                  icon: 'assets/svg/clock_icon.svg',
                   isActive: _currentPage == 0 ? true : false,
                   onTap: () {
                     setState(() {
@@ -77,7 +79,7 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
                 ),
                 AppBarButtonWidget(
                   text: 'Recurring',
-                  icon: 'assets/icons/recurring.png',
+                  icon: 'assets/svg/recurring_icon.svg',
                   isActive: _currentPage == 1 ? true : false,
                   onTap: () {
                     setState(() {

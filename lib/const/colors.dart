@@ -7,6 +7,8 @@ const kMainTextColor = Color(0xFF1A1717);
 const kBodyTextColor = Color(0xFF747377);
 const kErrorColor = Color(0xFFF43528);
 const kDisableColor = Color(0xFFB9B9B9);
+const kHintColor = Color(0xffE6E6E6);
+
 
 // const kContentColorLightTheme = Color.fromARGB(255, 56, 56, 56);
 // const kContentColorDarkTheme = Color.fromARGB(255, 188, 207, 199);

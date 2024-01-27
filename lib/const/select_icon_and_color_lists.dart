@@ -1,9 +1,9 @@
 const List<String> selectIcons = [
-  'assets/icons/icon_selector_business.png',
-  'assets/icons/icon_selector_list.png',
-  'assets/icons/icon_selector_person_check.png',
-  'assets/icons/icon_selector_notification.png',
-  'assets/icons/icon_selector_error.png'
+  'assets/svg/business_icon.svg',
+  'assets/svg/list_icon_select.svg',
+  'assets/svg/person_check_select.svg',
+  'assets/svg/notifications_icon_select.svg',
+  'assets/svg/error_icon_select.svg'
 ];
 
 const List<int> selectColors = [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noti/domain/boxes.dart';
 import 'package:noti/view/add_recurring_noti_view/add_recurring_noti_view.dart';
 import 'package:noti/view/home_view/widgets/noti_container_widget.dart';
+import 'package:noti/view/widgets/custom_app_bar.dart';
 
 class RecurringNotiListView extends StatefulWidget {
   final String title;
@@ -15,7 +16,6 @@ class RecurringNotiListView extends StatefulWidget {
 
 class _RecurringNotiListViewState extends State<RecurringNotiListView> {
   List<dynamic> notiList = [];
- 
 
   @override
   Widget build(BuildContext context) {
@@ -23,93 +23,94 @@ class _RecurringNotiListViewState extends State<RecurringNotiListView> {
         .where((element) => element.minute == widget.minute)
         .toList();
     return Scaffold(
-      appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Image.asset(
-            'assets/icons/arrow_back_ios_icon.png',
-            color: Colors.white,
+      body: Column(
+        children: [
+          CustomAppBarWidget(
+            title: widget.title,
+            needButton: true,
           ),
-        ),
-        title: Text(widget.title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(
-          left: 16.0,
-          right: 16.0,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ListView.separated(
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.only(top: 16.0),
-                itemCount: notiList.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  int notiIndex = recurringNotiBox.values.toList().indexWhere(
-                        (element) => element.message == notiList[index].message,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 16.0,
+              right: 16.0,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListView.separated(
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.only(top: 16.0),
+                    itemCount: notiList.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      int notiIndex =
+                          recurringNotiBox.values.toList().indexWhere(
+                                (element) =>
+                                    element.message == notiList[index].message,
+                              );
+                      return NotiContainerWidget(
+                        index: notiIndex,
+                        updateState: updateState,
+                        message: notiList[index].message,
+                        icon: notiList[index].icon,
+                        color: notiList[index].color,
+                        time: widget.title.toLowerCase(),
                       );
-                  return NotiContainerWidget(
-                    index: notiIndex,
-                    updateState: updateState,
-                    message: notiList[index].message,
-                    icon: notiList[index].icon,
-                    color: notiList[index].color,
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 16,
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            AddRecurringNotiView(minute: widget.minute),
-                      ),
-                    );
-                  },
-                  child: Container(
-                      alignment: Alignment.center,
-                      height: 48,
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/icons/add_circle.png',
-                            height: 20,
-                            width: 20,
-                            color: Colors.white,
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(
+                        height: 16,
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AddRecurringNotiView(
+                              minute: widget.minute,
+                              updateState: updateState,
+                            ),
                           ),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          Text(
-                            'Add new notification',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleSmall!
-                                .copyWith(color: Colors.white),
-                          ),
-                        ],
-                      ))),
-              const SizedBox(
-                height: 16.0,
+                        );
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          height: 48,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/add_circle.png',
+                                height: 20,
+                                width: 20,
+                                color: Colors.white,
+                              ),
+                              const SizedBox(
+                                width: 8.0,
+                              ),
+                              Text(
+                                'Add new notification',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ))),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

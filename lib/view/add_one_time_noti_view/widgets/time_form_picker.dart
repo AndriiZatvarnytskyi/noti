@@ -24,43 +24,85 @@ class TimeFormPickerWidget extends StatefulWidget {
 class _TimeFormPickerWidgetState extends State<TimeFormPickerWidget> {
   String? resultTime;
 
+  final FocusNode focusNodeOne = FocusNode();
+  final FocusNode focusNodeTwo = FocusNode();
+  final FocusNode focusNodeThree = FocusNode();
+  final FocusNode focusNodeFour = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        TimeInput(widget.fieldOne, 0, widget.checkEmpty), // auto focus
-        TimeInput(widget.fieldTwo, 1, widget.checkEmpty),
+        TimeInput(
+            widget.fieldOne, 0, widget.checkEmpty, focusNodeOne), // auto focus
+        TimeInput(widget.fieldTwo, 1, widget.checkEmpty, focusNodeTwo),
         const SizedBox(
           width: 7,
         ),
         Text(
           ':',
+          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                fontSize: 32,
                 color: const Color(0xFFB9B9B9),
               ),
         ),
         const SizedBox(
           width: 7,
         ),
-        TimeInput(widget.fieldThree, 2, widget.checkEmpty),
-        TimeInput(widget.fieldFour, 3, widget.checkEmpty),
+        TimeInput(widget.fieldThree, 2, widget.checkEmpty, focusNodeThree),
+        TimeInput(widget.fieldFour, 3, widget.checkEmpty, focusNodeFour),
       ],
     );
   }
 }
 
-// Create an input widget that takes only one digit
-class TimeInput extends StatelessWidget {
+class TimeInput extends StatefulWidget {
   final Function checkEmpty;
   final TextEditingController controller;
+  final FocusNode focusNode;
   final int index;
-  const TimeInput(this.controller, this.index, this.checkEmpty, {Key? key}) : super(key: key);
+  const TimeInput(this.controller, this.index, this.checkEmpty, this.focusNode,
+      {Key? key})
+      : super(key: key);
+
+  @override
+  State<TimeInput> createState() => _TimeInputState();
+}
+
+class _TimeInputState extends State<TimeInput> {
+  int backCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.focusNode.addListener(() {
+      if (widget.focusNode.hasFocus) {
+        RawKeyboard.instance.addListener(_handleKey);
+      } else {
+        RawKeyboard.instance.removeListener(_handleKey);
+      }
+    });
+  }
+
+  void _handleKey(RawKeyEvent event) {
+    if (event is RawKeyDownEvent &&
+        event.logicalKey == LogicalKeyboardKey.backspace) {
+      if (widget.controller.text.isEmpty && widget.index != 0) {
+        widget.focusNode.previousFocus();
+        backCount = 0;
+      } else {
+        backCount = 1;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 6.0, left: index != 0 ? 6.0 : 0.0),
+      padding: EdgeInsets.only(right: 6.0, left: widget.index != 0 ? 6.0 : 0.0),
       child: Container(
         alignment: Alignment.center,
         width: 44.0,
@@ -69,32 +111,35 @@ class TimeInput extends StatelessWidget {
           textAlign: TextAlign.center,
           autofocus: false,
           maxLength: 1,
-          controller: controller,
+          focusNode: widget.focusNode,
+          controller: widget.controller,
           style: Theme.of(context).textTheme.titleSmall,
           keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           cursorColor: Theme.of(context).textTheme.titleSmall!.color,
+          onEditingComplete: () {
+            widget.focusNode.nextFocus();
+          },
           onChanged: (value) {
             if (value.length == 1) {
               FocusScope.of(context).nextFocus();
             }
-            if (index == 0) {
-              context.read<LoginBloc>().fieldOne = controller.text;
-            } else if (index == 1) {
-              context.read<LoginBloc>().fieldTwo = controller.text;
+            if (widget.index == 0) {
+              context.read<LoginBloc>().fieldOne = widget.controller.text;
+            } else if (widget.index == 1) {
+              context.read<LoginBloc>().fieldTwo = widget.controller.text;
             }
-            if (index == 2) {
-              context.read<LoginBloc>().fieldThree = controller.text;
+            if (widget.index == 2) {
+              context.read<LoginBloc>().fieldThree = widget.controller.text;
             }
-            if (index == 3) {
-              context.read<LoginBloc>().fieldFour = controller.text;
+            if (widget.index == 3) {
+              context.read<LoginBloc>().fieldFour = widget.controller.text;
             }
-            checkEmpty();
+            widget.checkEmpty();
           },
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             counterText: '',
-            contentPadding: const EdgeInsets.all(0),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+            contentPadding: EdgeInsets.all(0),
           ),
         ),
       ),

@@ -9,4 +9,6 @@ sealed class OneTimeNotiState extends Equatable {
 
 final class OneTimeNotiInitial extends OneTimeNotiState {}
 
+final class OneTimeNotiDelete extends OneTimeNotiState {}
+
 final class OneTimeNotiError extends OneTimeNotiState {}

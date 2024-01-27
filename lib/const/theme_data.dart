@@ -5,108 +5,57 @@ ThemeData lightTheme() {
   return ThemeData(
       // ignore: deprecated_member_use
       errorColor: kErrorColor,
-      // floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      //     backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      //     foregroundColor: Colors.black87,
-      //     elevation: 3),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(12.0),
             ),
           ),
           backgroundColor: const MaterialStatePropertyAll(kPrimaryColor),
         ),
       ),
+      scaffoldBackgroundColor: Colors.white,
+      hintColor: kHintColor,
       primaryColor: kPrimaryColor,
       disabledColor: kDisableColor,
       appBarTheme: const AppBarTheme(
         shadowColor: Color.fromRGBO(0, 0, 0, 1),
         backgroundColor: kAppBarColor,
+        foregroundColor: Color.fromARGB(255, 0, 0, 0),
         centerTitle: true,
         titleTextStyle: TextStyle(
           color: Colors.white,
           fontSize: 16,
           fontWeight: FontWeight.w700,
         ),
-        elevation: 4,
+        elevation: 0,
       ),
-      // timePickerTheme: const TimePickerThemeData(
-      //   backgroundColor: Color.fromARGB(255, 240, 240, 240),
-      //   hourMinuteShape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(8)),
-      //   ),
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.all(Radius.circular(8)),
-      //   ),
+      inputDecorationTheme: const InputDecorationTheme(
+        errorStyle: TextStyle(
+            fontSize: 12, fontWeight: FontWeight.w400, color: kErrorColor),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: kHintColor, width: 1),
+        ),
+        // Бордер у нормальному стані
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: kHintColor, width: 1),
+        ),
+        // Бордер при фокусуванні
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide: BorderSide(color: kPrimaryColor, width: 1),
+        ),
 
-      //   hourMinuteColor: kLightScaffoldBackgroundColor,
-      //   hourMinuteTextColor: kLightThemeTextColor,
-      //   dialHandColor: Colors.black26,
-      //   dialBackgroundColor: kLightScaffoldBaackgroundColor,
-      //   hourMinuteTextStyle: TextStyle(
-      //       color: kLightThemeTextColor,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 25),
-      //   dayPeriodTextStyle: TextStyle(
-      //       color: kLightThemeTextColor,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 20),
-      //   helpTextStyle: TextStyle(
-      //       fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
-      //   inputDecorationTheme: InputDecorationTheme(
-      //     border: InputBorder.none,
-      //     contentPadding: EdgeInsets.all(20),
-      //   ),
-      //   dialTextColor: kLightThemeTextColor,
-      //   entryModeIconColor: kLightScaffoldBackgroundColor,
-      // ),
-
-      inputDecorationTheme: const InputDecorationTheme(),
-      // disabledColor: Colors.black87,
-      // hintColor: Colors.black26,
-      // primaryColor: kPrimaryColor,
-      // primaryColorDark: const Color.fromARGB(255, 206, 167, 62),
-      // primaryColorLight: const Color.fromRGBO(255, 206, 167, 62),
-      // scaffoldBackgroundColor: kLightScaffoldBackgroundColor,
-      // progressIndicatorTheme: const ProgressIndicatorThemeData(
-      //     color: Color.fromARGB(255, 179, 179, 179)),
-      // fontFamily: 'Futura',
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderSide:
+              BorderSide(color: Color.fromARGB(255, 255, 255, 255), width: 1),
+        ),
+      ),
       textTheme: const TextTheme(
-        // labelMedium: TextStyle(
-        //   color: kLightThemeTextColor,
-        //   fontWeight: FontWeight.w300,
-        //   fontSize: 16,
-        // ),
-        // displayLarge: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 36),
-        // displayMedium: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 20),
-        // displaySmall: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 17),
-        // headlineMedium: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.w400,
-        //     fontSize: 16),
-        // headlineSmall: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 14),
-        // titleLarge: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.w500,
-        //     fontSize: 13),
-        // bodyLarge: TextStyle(
-        //     color: kLightThemeTextColor,
-        //     fontWeight: FontWeight.normal,
-        //     fontSize: 12),
         labelMedium: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w500,

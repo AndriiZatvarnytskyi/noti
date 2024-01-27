@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(children: [
-        CustomAppBarWidget(
+        CustomPageControllerWidget(
           pageController: _myPage,
           initPage: widget.page,
         ),
